@@ -70,3 +70,50 @@ The optimization problem can be rewritten as:
 
 Using the pointwise mutual information, which measures how strongly associated two events are.
 
+## Outputs for vaiours tests:
+
+### Similarity list
+
+* Word Provided as input
+
+```python
+find_similar_to = 'dog'
+```
+Output:
+
+| word|Similarity|
+|--------|:---------:
+ dogs |  0.81                                                  
+ puppy |  0.70                                               
+ sheepdogs |  0.69                                             
+ dachshund |  0.69                                             
+ sheepdog |  0.68                                              
+ puppies |  0.68                                               
+ poodle |  0.68                                                
+ chickenhound |  0.67                                       
+ coonhound |  0.66                                             
+ doberman |  0.66
+
+* Vector Similarity using addition and subtraction:
+
+```python
+positive_instance = ['woman', 'king']
+negative_instance = ['man']
+```
+
+Output:
+
+|word|Similarity|
+|--|:--:
+queen | 0.66
+princess | 0.58
+pregnant | 0.58                                         
+princesses | 0.56                                           
+consort | 0.54                                          
+regnants | 0.53                                             
+queenmother | 0.52                                          
+princess | 0.50                                            
+parmaprincess | 0
+
+
+   
