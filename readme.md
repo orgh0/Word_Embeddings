@@ -70,7 +70,7 @@ The optimization problem can be rewritten as:
 
 Using the pointwise mutual information, which measures how strongly associated two events are.
 
-## Outputs for vaiours tests:
+## Outputs for various tests:
 
 ### Similarity list
 
