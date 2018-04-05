@@ -3,8 +3,8 @@ from gensim.models import KeyedVectors
 
 
 find_similar_to = 'dog'
-positive_instance = ['king', 'queen']
-negative_instance = ['male']
+positive_instance = ['woman', 'king']
+negative_instance = ['man']
 
 print("Model loading started")
 en_model = KeyedVectors.load_word2vec_format('../wiki.en/wiki.en.vec')
