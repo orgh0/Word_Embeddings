@@ -19,6 +19,6 @@ for similar_word in en_model.similar_by_word(find_similar_to):
     print("Word: {0}, Similarity: {1:.2f}".format(similar_word[0], similar_word[1]))
 
 
-for resultant_word in en_model.most_similar(positive=positive_instance, negative=negative_instance topn=1):
+for resultant_word in en_model.most_similar(positive=positive_instance, negative=negative_instance, topn=1):
     print("Word : {0} , Similarity: {1:.2f}".format(resultant_word[0], resultant_word[1]))
 
