@@ -16,21 +16,57 @@ Gensim is a robust open-source vector space modeling and topic modeling toolkit 
 
 ## Code Explanation
 
-Loads the Model:
+### Loads the Model:
 ```python
 
 en_model = KeyedVectors.load_word2vec_format('../wiki.en/wiki.en.vec')
 
 ```
 
-Finds similar words:
+### Finds similar words:
 ```python
 for similar_word in en_model.similar_by_word(find_similar_to):
     print("Word: {0}, Similarity: {1:.2f}".format(similar_word[0], similar_word[1]))
 ```
 
-Finds analogous words:
+### Finds analogous words:
 ```python
 for resultant_word in en_model.most_similar(positive=positive_instance, negative=negative_instance, topn=1):
     print("Word : {0} , Similarity: {1:.2f}".format(resultant_word[0], resultant_word[1]))
 ```
+
+## Vector addition and subtraction of words
+
+### Patterns observed:
+```math
+Vector['king'] - Vector['man'] + vector['woman'] ≈ vector['queen']
+
+Vector[Paris] - Vector[France] + VectorChina] ≈ Vector[Beijing]
+```
+
+### Intuition:
+
+The idea is perhaps that vectors are approximately sums of their semantic components, so that [king] includes a "male" component as well as "ruler", "person", and whatever else, and [queen] has basically the same set of components except it has "female" instead of "male". [man] - [woman] would then end up at ["male"] - ["female"], so adding it to [king] would just swap the "male" concept for "female".
+
+### Mathematical Idea:
+
+Let w be a word.
+
+We define `p(w|w')` =  probability that when we see the word w, another word w′ shows up nearby .
+
+Then:
+`p(w′|king) / p(w′|queen) ≈ p(w′|man) / p(w′|woman)`
+
+So finding a word w such that,
+`w is to queen as man is to woman` becomes an optimization problem:
+
+Find a w that minimizes:
+
+![pic1](./images/opt_img.png)
+
+The optimization problem can be rewritten as:
+
+![pic2](./images/opt_img_1.png)
+
+Using the pointwise mutual information, which measures how strongly associated two events are.
+
